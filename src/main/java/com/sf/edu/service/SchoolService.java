@@ -17,5 +17,5 @@ public interface SchoolService {
      *
      * @return
      */
-    public int saveArea(School school);
+    public int saveSchool(School school);
 }
