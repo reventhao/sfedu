@@ -10,6 +10,13 @@
   <sql id="Base_Column_List">
     cid, gid, tid, name
   </sql>
+
+  <select id="listClass" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from class
+  </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
