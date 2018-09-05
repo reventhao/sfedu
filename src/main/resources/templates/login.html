@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>盛方网上阅卷系统</title>
+    <link href="/layui/css/layui.css" rel="stylesheet">
+    <link href="/layui/css/login.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="login-box">
+    <div class="login-header layui-bg-blue" align="center">
+        盛方网上阅卷系统
+    </div>
+    <div class="login-body">
+        <div class="login-img">
+            <img src="/layui/images/banner.png">
+        </div>
+        <div class="line-box">
+            <div class="line"></div>
+        </div>
+        <div class="login-form">
+            <form action="/sys_admin/login.do" class="layui-form" method="post" lay-filter="lform">
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <input type="text" id="acc" name="acc" required="" lay-verify="required"
+                               placeholder="请输入账号" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <input type="password" id="pwd" name="pwd" required="" lay-verify="required"
+                               placeholder="请输入密码" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block ver-box">
+                        <input type="text" id="vercode" name="vercode" required="" lay-verify="required"
+                               placeholder="请输入验证码" autocomplete="off" class="layui-input">
+                        <a href="#" onclick="changeImg()" target="_self"><img class="ver-code"
+                                                                              src="/sys_admin/get_vercode?"
+                                                                              id="vercode-img"></a>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button id="login" class="layui-btn layui-bg-blue" lay-submit="" lay-filter="formDemo">登录
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <a class="forget-pass" href="#">忘记密码</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="login-footer">
+    <span>Copyright © 贵州盛方 Inc. All rights reserved</span>
+</div>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script>
+    layui.use(['form', 'jquery', 'layer'], function () {
+        var form = layui.form;
+        var layer = layui.layer;
+        var $ = jQuery = layui.$;
+        var acc = $("#acc");
+        var pwd = $("#pwd");
+        var vercode = $("#vercode");
+        form.on('submit(lform)', function (data) {
+            $.ajax({
+                url: "/sys_admin/log_in",
+                data: {acc: acc.val(), pwd: pwd.val(), vercode: vercode.val()},
+                success: function (data) {
+                    if (data == "error1") {
+                        layer.open({
+                            title: '错误'
+                            , content: '用户名或密码错误'
+                        });
+                        changeImg();
+                    } else if (data == "error2") {
+                        layer.open({
+                            title: '错误'
+                            , content: '验证码错误'
+                        });
+                        changeImg();
+                    } else {
+                        window.location.href = "/sys_menu/menu"
+                    }
+                }
+            })
+            return false;
+        });
+    })
+
+    function changeImg() {
+        var vercode = document.getElementById("vercode-img");
+        vercode.src = "/sys_admin/get_vercode?key=" +randomString(30);
+    }
+    function randomString(len) {
+        len = len || 32;
+        var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz2345678';
+        var maxPos = chars.length;
+        var pwd = '';
+        for (var i = 0; i < len; i++) {
+            pwd += chars.charAt(Math.floor(Math.random() * maxPos));
+        }
+        return pwd;
+    }
+</script>
+</body>
+
+</html>

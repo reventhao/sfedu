@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sf.edu.mapper.Sys_AdminMapper">
+    <resultMap id="BaseResultMap" type="com.sf.edu.entity.Sys_Admin">
+        <id column="seq" jdbcType="INTEGER" property="seq"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="acc" jdbcType="VARCHAR" property="acc"/>
+        <result column="pwd" jdbcType="VARCHAR" property="pwd"/>
+        <result column="lip" jdbcType="VARCHAR" property="lip"/>
+        <result column="ltime" jdbcType="VARCHAR" property="ltime"/>
+        <result column="lid" jdbcType="INTEGER" property="lid"/>
+        <result column="dflag" jdbcType="VARCHAR" property="dflag"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    seq, name, acc, pwd, lip, ltime, lid, dflag
+  </sql>
+
+    <select id="selectByAccPwd" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_admin where acc = #{acc} and pwd = #{pwd}
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_admin
+        where seq = #{seq,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_admin
+    where seq = #{seq,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.sf.edu.entity.Sys_Admin">
+    insert into sys_admin (seq, name, acc, 
+      pwd, lip, ltime, lid, 
+      dflag)
+    values (#{seq,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{acc,jdbcType=VARCHAR}, 
+      #{pwd,jdbcType=VARCHAR}, #{lip,jdbcType=VARCHAR}, #{ltime,jdbcType=VARCHAR}, #{lid,jdbcType=INTEGER}, 
+      #{dflag,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.sf.edu.entity.Sys_Admin">
+        insert into sys_admin
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="seq != null">
+                seq,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="acc != null">
+                acc,
+            </if>
+            <if test="pwd != null">
+                pwd,
+            </if>
+            <if test="lip != null">
+                lip,
+            </if>
+            <if test="ltime != null">
+                ltime,
+            </if>
+            <if test="lid != null">
+                lid,
+            </if>
+            <if test="dflag != null">
+                dflag,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="seq != null">
+                #{seq,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="acc != null">
+                #{acc,jdbcType=VARCHAR},
+            </if>
+            <if test="pwd != null">
+                #{pwd,jdbcType=VARCHAR},
+            </if>
+            <if test="lip != null">
+                #{lip,jdbcType=VARCHAR},
+            </if>
+            <if test="ltime != null">
+                #{ltime,jdbcType=VARCHAR},
+            </if>
+            <if test="lid != null">
+                #{lid,jdbcType=INTEGER},
+            </if>
+            <if test="dflag != null">
+                #{dflag,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.sf.edu.entity.Sys_Admin">
+        update sys_admin
+        <set>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="acc != null">
+                acc = #{acc,jdbcType=VARCHAR},
+            </if>
+            <if test="pwd != null">
+                pwd = #{pwd,jdbcType=VARCHAR},
+            </if>
+            <if test="lip != null">
+                lip = #{lip,jdbcType=VARCHAR},
+            </if>
+            <if test="ltime != null">
+                ltime = #{ltime,jdbcType=VARCHAR},
+            </if>
+            <if test="lid != null">
+                lid = #{lid,jdbcType=INTEGER},
+            </if>
+            <if test="dflag != null">
+                dflag = #{dflag,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where seq = #{seq,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.sf.edu.entity.Sys_Admin">
+    update sys_admin
+    set name = #{name,jdbcType=VARCHAR},
+      acc = #{acc,jdbcType=VARCHAR},
+      pwd = #{pwd,jdbcType=VARCHAR},
+      lip = #{lip,jdbcType=VARCHAR},
+      ltime = #{ltime,jdbcType=VARCHAR},
+      lid = #{lid,jdbcType=INTEGER},
+      dflag = #{dflag,jdbcType=VARCHAR}
+    where seq = #{seq,jdbcType=INTEGER}
+  </update>
+</mapper>

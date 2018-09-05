@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sf.edu.mapper.S_AttrMapper">
+  <resultMap id="BaseResultMap" type="com.sf.edu.entity.S_Attr">
+    <id column="seq" jdbcType="VARCHAR" property="seq" />
+    <result column="sid" jdbcType="VARCHAR" property="sid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="spid" jdbcType="VARCHAR" property="spid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    seq, sid, name, spid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from s_attr
+    where seq = #{seq,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from s_attr
+    where seq = #{seq,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sf.edu.entity.S_Attr">
+    insert into s_attr (seq, sid, name, 
+      spid)
+    values (#{seq,jdbcType=VARCHAR}, #{sid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{spid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sf.edu.entity.S_Attr">
+    insert into s_attr
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="seq != null">
+        seq,
+      </if>
+      <if test="sid != null">
+        sid,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="spid != null">
+        spid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="seq != null">
+        #{seq,jdbcType=VARCHAR},
+      </if>
+      <if test="sid != null">
+        #{sid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="spid != null">
+        #{spid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sf.edu.entity.S_Attr">
+    update s_attr
+    <set>
+      <if test="sid != null">
+        sid = #{sid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="spid != null">
+        spid = #{spid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where seq = #{seq,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sf.edu.entity.S_Attr">
+    update s_attr
+    set sid = #{sid,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      spid = #{spid,jdbcType=VARCHAR}
+    where seq = #{seq,jdbcType=VARCHAR}
+  </update>
+</mapper>

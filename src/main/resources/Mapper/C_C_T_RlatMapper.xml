@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sf.edu.mapper.C_C_T_RlatMapper">
+  <resultMap id="BaseResultMap" type="com.sf.edu.entity.C_C_T_Rlat">
+    <id column="seq" jdbcType="VARCHAR" property="seq" />
+    <result column="csid" jdbcType="VARCHAR" property="csid" />
+    <result column="cid" jdbcType="VARCHAR" property="cid" />
+    <result column="tid" jdbcType="VARCHAR" property="tid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    seq, csid, cid, tid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from c_c_t_rlat
+    where seq = #{seq,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from c_c_t_rlat
+    where seq = #{seq,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sf.edu.entity.C_C_T_Rlat">
+    insert into c_c_t_rlat (seq, csid, cid, 
+      tid)
+    values (#{seq,jdbcType=VARCHAR}, #{csid,jdbcType=VARCHAR}, #{cid,jdbcType=VARCHAR}, 
+      #{tid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sf.edu.entity.C_C_T_Rlat">
+    insert into c_c_t_rlat
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="seq != null">
+        seq,
+      </if>
+      <if test="csid != null">
+        csid,
+      </if>
+      <if test="cid != null">
+        cid,
+      </if>
+      <if test="tid != null">
+        tid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="seq != null">
+        #{seq,jdbcType=VARCHAR},
+      </if>
+      <if test="csid != null">
+        #{csid,jdbcType=VARCHAR},
+      </if>
+      <if test="cid != null">
+        #{cid,jdbcType=VARCHAR},
+      </if>
+      <if test="tid != null">
+        #{tid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sf.edu.entity.C_C_T_Rlat">
+    update c_c_t_rlat
+    <set>
+      <if test="csid != null">
+        csid = #{csid,jdbcType=VARCHAR},
+      </if>
+      <if test="cid != null">
+        cid = #{cid,jdbcType=VARCHAR},
+      </if>
+      <if test="tid != null">
+        tid = #{tid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where seq = #{seq,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sf.edu.entity.C_C_T_Rlat">
+    update c_c_t_rlat
+    set csid = #{csid,jdbcType=VARCHAR},
+      cid = #{cid,jdbcType=VARCHAR},
+      tid = #{tid,jdbcType=VARCHAR}
+    where seq = #{seq,jdbcType=VARCHAR}
+  </update>
+</mapper>

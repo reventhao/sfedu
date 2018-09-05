@@ -1,0 +1,136 @@
+body {
+	background: url(../images/bg_img.jpg) no-repeat top center #c9e6f6;
+	/*background-image: radial-gradient(#c9e6f6, #ffffff);*/
+	background-size: 1920px 800px;
+}
+
+a:focus{
+	outline: none;
+}
+
+.login-box {
+	position: relative;
+	width: 800px;
+	border-radius: 10px;
+	overflow: hidden;
+	margin: 180px auto 0;
+	display: block;
+	z-index: 2000;
+}
+
+.login-header {
+	background-image: radial-gradient(#009bff, #7ab5e0);
+	width: 800px;
+	margin: 0 auto;
+	line-height: 80px;
+	font-size: 36px;
+}
+
+.login-body {
+	height: 320px;
+	background-color: #c9e6f6;
+	width: 800px;
+	margin: 0 auto;
+}
+
+.login-img {
+	float: left;
+	display: inline-block;
+	width: 380px;
+}
+
+.login-img img {
+	margin-left: 15px;
+	margin-top: 20px;
+	/*mix-blend-mode: multiply;*/
+	width: 380px;
+}
+
+.descr {
+	text-align: center;
+	margin: 30px auto;
+}
+
+.login-form {
+	width: 380px;
+	height: 318.28px;
+	float: right;
+	display: inline-block;
+}
+
+.login-form form {
+	padding: 30px 70px 0 0;
+}
+
+.layui-input-block {
+	margin-left: 52px;
+	min-height: 36px;
+}
+
+.login-form form .layui-form-item {
+	margin-bottom: 27px;
+}
+
+.login-form input {
+	box-shadow: 1px 1px 1px 1px #888888;
+}
+
+.ver-box {
+	line-height: 42px;
+}
+
+.ver-code {
+	margin-top: 2px;
+	vertical-align: middle;
+	display: inline-block;
+	margin-bottom: 2px;
+	margin-left: 10px;
+	width: 114px;
+	height: 34px;
+}
+
+#vercode {
+	vertical-align: middle;
+	display: inline-block;
+	width: 50%;
+}
+
+#login {
+	width: 100%;
+}
+
+.login-footer {
+	width: 1000px;
+	margin: 260px auto 0;
+}
+
+.login-footer span {
+	text-align: center;
+	display: block;
+	margin: 20px;
+}
+
+.line-box {
+	margin-left: 30px;
+	width: 4px;
+	display: inline-block;
+	height: 200px;
+}
+
+.line {
+	width: 2px;
+	height: 250px;
+	background-color: #007DDB;
+	margin-top: 28px;
+	margin-left: 2px;
+}
+
+#login {
+	margin-top: 10px;
+}
+
+.forget-pass {
+	text-decoration: underline;
+	margin-top: -20px;
+	float: right;
+}

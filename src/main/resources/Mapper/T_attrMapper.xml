@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sf.edu.mapper.T_attrMapper">
+  <resultMap id="BaseResultMap" type="com.sf.edu.entity.T_attr">
+    <id column="seq" jdbcType="VARCHAR" property="seq" />
+    <result column="tid" jdbcType="VARCHAR" property="tid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    seq, tid, name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_attr
+    where seq = #{seq,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_attr
+    where seq = #{seq,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sf.edu.entity.T_attr">
+    insert into t_attr (seq, tid, name
+      )
+    values (#{seq,jdbcType=VARCHAR}, #{tid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sf.edu.entity.T_attr">
+    insert into t_attr
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="seq != null">
+        seq,
+      </if>
+      <if test="tid != null">
+        tid,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="seq != null">
+        #{seq,jdbcType=VARCHAR},
+      </if>
+      <if test="tid != null">
+        #{tid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sf.edu.entity.T_attr">
+    update t_attr
+    <set>
+      <if test="tid != null">
+        tid = #{tid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where seq = #{seq,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sf.edu.entity.T_attr">
+    update t_attr
+    set tid = #{tid,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR}
+    where seq = #{seq,jdbcType=VARCHAR}
+  </update>
+</mapper>

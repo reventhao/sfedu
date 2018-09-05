@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sf.edu.mapper.S_YearMapper">
+  <resultMap id="BaseResultMap" type="com.sf.edu.entity.S_Year">
+    <id column="yid" jdbcType="VARCHAR" property="yid" />
+    <result column="invl" jdbcType="VARCHAR" property="invl" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    yid, invl
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from s_year
+    where yid = #{yid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from s_year
+    where yid = #{yid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sf.edu.entity.S_Year">
+    insert into s_year (yid, invl)
+    values (#{yid,jdbcType=VARCHAR}, #{invl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sf.edu.entity.S_Year">
+    insert into s_year
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="yid != null">
+        yid,
+      </if>
+      <if test="invl != null">
+        invl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="yid != null">
+        #{yid,jdbcType=VARCHAR},
+      </if>
+      <if test="invl != null">
+        #{invl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sf.edu.entity.S_Year">
+    update s_year
+    <set>
+      <if test="invl != null">
+        invl = #{invl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where yid = #{yid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sf.edu.entity.S_Year">
+    update s_year
+    set invl = #{invl,jdbcType=VARCHAR}
+    where yid = #{yid,jdbcType=VARCHAR}
+  </update>
+</mapper>

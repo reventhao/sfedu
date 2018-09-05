@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sf.edu.mapper.StudentMapper">
+  <resultMap id="BaseResultMap" type="com.sf.edu.entity.Student">
+    <id column="stid" jdbcType="VARCHAR" property="stid" />
+    <result column="ssid" jdbcType="VARCHAR" property="ssid" />
+    <result column="cid" jdbcType="VARCHAR" property="cid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    stid, ssid, cid, name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from student
+    where stid = #{stid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from student
+    where stid = #{stid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sf.edu.entity.Student">
+    insert into student (stid, ssid, cid, 
+      name)
+    values (#{stid,jdbcType=VARCHAR}, #{ssid,jdbcType=VARCHAR}, #{cid,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sf.edu.entity.Student">
+    insert into student
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stid != null">
+        stid,
+      </if>
+      <if test="ssid != null">
+        ssid,
+      </if>
+      <if test="cid != null">
+        cid,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stid != null">
+        #{stid,jdbcType=VARCHAR},
+      </if>
+      <if test="ssid != null">
+        #{ssid,jdbcType=VARCHAR},
+      </if>
+      <if test="cid != null">
+        #{cid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sf.edu.entity.Student">
+    update student
+    <set>
+      <if test="ssid != null">
+        ssid = #{ssid,jdbcType=VARCHAR},
+      </if>
+      <if test="cid != null">
+        cid = #{cid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where stid = #{stid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sf.edu.entity.Student">
+    update student
+    set ssid = #{ssid,jdbcType=VARCHAR},
+      cid = #{cid,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR}
+    where stid = #{stid,jdbcType=VARCHAR}
+  </update>
+</mapper>
