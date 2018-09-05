@@ -18,7 +18,7 @@
     <select id="selectByAccPwd" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from sys_admin where acc = #{acc} and pwd = #{pwd}
+        from sys_admin where acc = #{param1} and pwd = #{param2}
     </select>
 
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">

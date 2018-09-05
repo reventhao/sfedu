@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("sys_area/")
+@RequestMapping("area/")
 public class AreaController {
     @Autowired
-    private AreaService sys_areaService;
+    private AreaService areaService;
 
     @RequestMapping(value = "area_page")
     public ModelAndView areaPage(){
