@@ -120,11 +120,11 @@
 						<!--学校表单-->
 						<table class="layui-table" lay-data="{width: 800, height:332, url:'/demo/table/user/', page:true, id:'idTest'}" lay-filter="demo">
 							<thead>
-								<tr>
-									<th lay-data="{type:'checkbox', fixed: 'left'}"></th>
-									<th lay-data="{field:'id', width:120, sort: true, fixed: true}">学校编号</th>
-									<th lay-data="{field:'username', width:120}">学校名称</th>
-								</tr>
+							<tr>
+								<th lay-data="{type:'checkbox', fixed: 'left'}"></th>
+								<th lay-data="{field:'id', width:120, sort: true, fixed: true}">学校编号</th>
+								<th lay-data="{field:'username', width:120}">学校名称</th>
+							</tr>
 							</thead>
 						</table>
 
@@ -136,39 +136,32 @@
 						<script src="//res.layui.com/layui/dist/layui.js" charset="utf-8"></script>
 
 						<script>
-							layui.use('table', function() {
-										var table = layui.table;
-										table.render({
-											url:"/area/listarea"
-										})
-									}
+                            layui.use('table', function() {
+                                var table = layui.table;
+                                //监听表格复选框选择
+                                table.on('checkbox(demo)', function(obj) {
+                                    console.log(obj)
+                                });
+                                //监听工具条
+                                table.on('tool(demo)', function(obj) {
+                                    var data = obj.data;
+                                    if(obj.event === 'del') {
+                                        layer.confirm('真的删除行么', function(index) {
+                                            obj.del();
+                                            layer.close(index);
+                                        });
+                                    } else if(obj.event === 'edit') {
+                                        layer.alert('编辑行：<br>' + JSON.stringify(data))
+                                    }
+                                });
 
-									layui.use('table', function() {
-										var table = layui.table;
-										table.render
-										//监听表格复选框选择
-										table.on('checkbox(demo)', function(obj) {
-											console.log(obj)
-										});
-										//监听工具条
-										table.on('tool(demo)', function(obj) {
-											var data = obj.data;
-											if(obj.event === 'del') {
-												layer.confirm('真的删除行么', function(index) {
-													obj.del();
-													layer.close(index);
-												});
-											} else if(obj.event === 'edit') {
-												layer.alert('编辑行：<br>' + JSON.stringify(data))
-											}
-										});
-									});
+                            });
 						</script>
 
 						<script>
-							layui.use("form", function() {
-								var form = layui.form;
-							})
+                            layui.use("form", function() {
+                                var form = layui.form;
+                            })
 						</script>
 					</div>
 				</div>
