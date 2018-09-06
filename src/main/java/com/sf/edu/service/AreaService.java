@@ -29,4 +29,8 @@ public interface AreaService {
     public Area selectArea(int aid);
 
     public int removeRecords(List<Integer> records);
+
+    public int removeRecord(int aid);
+
+    public int saveRecords(List<Area> records);
 }

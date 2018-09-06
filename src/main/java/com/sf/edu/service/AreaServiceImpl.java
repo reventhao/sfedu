@@ -41,4 +41,16 @@ public class AreaServiceImpl implements AreaService {
         int count = areaMapper.deleteRecordsByPrimaryKey(records);
         return count;
     }
+
+    @Override
+    public int saveRecords(List<Area> records) {
+        int count = areaMapper.insertRecords(records);
+        return count;
+    }
+
+    @Override
+    public int removeRecord(int aid) {
+        int count = areaMapper.deleteByPrimaryKey(aid);
+        return count;
+    }
 }

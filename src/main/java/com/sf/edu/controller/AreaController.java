@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -22,7 +23,7 @@ public class AreaController {
     @Autowired
     private AreaService areaService;
 
-    private static final Logger logger= LoggerFactory.getLogger(AreaController.class);
+    private static final Logger logger = LoggerFactory.getLogger(AreaController.class);
 
     @RequestMapping(value = "area_page")
     public ModelAndView areaPage() {
@@ -53,9 +54,21 @@ public class AreaController {
 
     }
 
-    @RequestMapping(value = "batchput")
+    @RequestMapping(value = "deleterecord")
     @ResponseBody
-    public String batchPut(@RequestBody List<Area> list) {
+    public String deleteRecord(@RequestParam int aid){
+        try {
+            areaService.removeRecord(aid);
+            logger.info("批量导入记录");
+            return "success";
+        } catch (Exception e) {
+            return "error";
+        }
+    }
+
+    @RequestMapping(value = "deleterecords")
+    @ResponseBody
+    public String deleteRecords(@RequestBody List<Area> list) {
         List<Integer> records = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
             records.add(list.get(i).getAid());
@@ -63,6 +76,18 @@ public class AreaController {
         try {
             areaService.removeRecords(records);
             logger.info("批量删除记录");
+            return "success";
+        } catch (Exception e) {
+            return "error";
+        }
+    }
+
+    @RequestMapping(value = "saverecords")
+    @ResponseBody
+    public String saveRecords(@RequestBody List<Area> records) {
+        try {
+            areaService.saveRecords(records);
+            logger.info("批量导入记录");
             return "success";
         } catch (Exception e) {
             return "error";

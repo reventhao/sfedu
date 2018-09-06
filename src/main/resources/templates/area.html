@@ -114,108 +114,20 @@
                 </form>
 
                 <div class="layui-btn-group demoTable">
-                    <button class="layui-btn" data-type="deleteRecord">批量删除</button>
-                    <button class="layui-btn" data-type="saveRecord">批量导入</button>
+                    <button class="layui-btn" data-type="deleteRecords">批量删除</button>
+                    <button class="layui-btn" data-type="saveRecords">批量导入</button>
                 </div>
                 <!--学区表单-->
                 <table class="layui-table" lay-filter="areatable" id="areatable">
                 </table>
 
-                <script type="text/html" id="barDemo">
+                <script type="text/html" id="btnbar">
                     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
                     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
                 </script>
 
                 <script src="/layui/layui.js" charset="utf-8"></script>
-                <script>
-                    layui.use(['table', 'form', 'layer', 'jquery'], function () {
-                        var table = layui.table;
-                        var form = layui.form;
-                        var layer = layui.layer;
-                        var $ = jQuery = layui.$;
-                        var name = $("#name");
-                        form.on('submit(area_form)', function (data) {
-                            $.ajax({
-                                url: "/area/savearea",
-                                data: {name: name.val()},
-                                success: function (data) {
-                                    layer.msg('添加成功', {
-                                        icon: 1,
-                                        time: 1000 //1秒关闭（如果不配置，默认是3秒）
-                                    }, function () {
-                                        trender.reload();
-                                    });
-                                }
-                            })
-                            return false;
-                        });
-                        //第一个实例
-                        var trender = table.render({
-                            elem: '#areatable'
-                            , height: 472
-                            , width: 800
-                            , url: '/area/listarea' //数据接口
-                            , page: true //开启分页
-                            , cols: [
-                                [ //表头
-                                    {fixed: "left", type: 'checkbox'}
-                                    , {field: 'aid', title: 'ID', sort: true, fixed: 'left'}
-                                    , {field: 'name', title: '用户名'}
-                                    , {fixed: 'right', align: 'center', toolbar: '#barDemo'}
-                                ]
-                            ]
-                        });
-
-                        var $ = layui.$, active = {
-                            deleteRecord: function () { //获取选中数据
-                                var checkStatus = table.checkStatus('areatable')
-                                    , data = checkStatus.data;
-                                var arr = new Array();
-                                for(var i = 0;i<data.length;i++){
-                                    arr.push(data[i]);
-                                }
-                                alert(arr);
-                                $.ajax({
-                                    url: "/area/batchput",
-                                    data:JSON.stringify(arr),
-                                    type: "POST",
-                                    dataType:"json",
-                                    contentType:"application/json",
-                                    success: function () {
-                                        layer.msg('添加成功', {
-                                            icon: 1,
-                                            time: 1000 //1秒关闭（如果不配置，默认是3秒）
-                                        }, function () {
-                                            trender.reload();
-                                        });
-                                    }
-                                })
-                            }
-                            , saveRecord: function () { //获取选中数目
-                                var checkStatus = table.checkStatus('areatable')
-                                    , data = checkStatus.data;
-                                layer.msg('选中了：' + data.length + ' 个');
-                            }
-                        };
-
-                        $('.demoTable .layui-btn').on('click', function () {
-                            var type = $(this).data('type');
-                            active[type] ? active[type].call(this) : '';
-                        });
-
-                        table.on('tool(areatable)', function (obj) {
-                            var data = obj.data;
-                            if (obj.event === 'del') {
-                                layer.confirm('真的删除行么', function (index) {
-                                    obj.del();
-                                    layer.close(index);
-                                });
-                            } else if (obj.event === 'edit') {
-                                layer.alert('编辑行：<br>' + JSON.stringify(data))
-                            }
-                        });
-                    })
-                </script>
+                <script src="/layui/js/area.js"></script>
             </div>
         </div>
     </div>
