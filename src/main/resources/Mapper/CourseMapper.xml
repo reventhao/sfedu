@@ -2,25 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sf.edu.mapper.CourseMapper">
   <resultMap id="BaseResultMap" type="com.sf.edu.entity.Course">
-    <id column="csid" jdbcType="VARCHAR" property="csid" />
+    <id column="csid" jdbcType="INTEGER" property="csid" />
     <result column="name" jdbcType="VARCHAR" property="name" />
   </resultMap>
   <sql id="Base_Column_List">
     csid, name
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from course
-    where csid = #{csid,jdbcType=VARCHAR}
+    where csid = #{csid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from course
-    where csid = #{csid,jdbcType=VARCHAR}
+    where csid = #{csid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.sf.edu.entity.Course">
     insert into course (csid, name)
-    values (#{csid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR})
+    values (#{csid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.sf.edu.entity.Course">
     insert into course
@@ -34,7 +34,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="csid != null">
-        #{csid,jdbcType=VARCHAR},
+        #{csid,jdbcType=INTEGER},
       </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
@@ -48,11 +48,11 @@
         name = #{name,jdbcType=VARCHAR},
       </if>
     </set>
-    where csid = #{csid,jdbcType=VARCHAR}
+    where csid = #{csid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.sf.edu.entity.Course">
     update course
     set name = #{name,jdbcType=VARCHAR}
-    where csid = #{csid,jdbcType=VARCHAR}
+    where csid = #{csid,jdbcType=INTEGER}
   </update>
 </mapper>

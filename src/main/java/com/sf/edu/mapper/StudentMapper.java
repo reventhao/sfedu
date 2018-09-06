@@ -1,9 +1,7 @@
 package com.sf.edu.mapper;
 
 import com.sf.edu.entity.Student;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface StudentMapper {
     int deleteByPrimaryKey(String stid);
 

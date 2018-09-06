@@ -1,26 +1,26 @@
 package com.sf.edu.entity;
 
 public class Grade {
-    private String gid;
+    private Integer gid;
 
-    private String sid;
+    private Integer sid;
 
     private String name;
 
-    public String getGid() {
+    public Integer getGid() {
         return gid;
     }
 
-    public void setGid(String gid) {
-        this.gid = gid == null ? null : gid.trim();
+    public void setGid(Integer gid) {
+        this.gid = gid;
     }
 
-    public String getSid() {
+    public Integer getSid() {
         return sid;
     }
 
-    public void setSid(String sid) {
-        this.sid = sid == null ? null : sid.trim();
+    public void setSid(Integer sid) {
+        this.sid = sid;
     }
 
     public String getName() {

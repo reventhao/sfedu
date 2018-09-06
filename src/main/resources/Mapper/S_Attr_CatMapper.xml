@@ -2,25 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sf.edu.mapper.S_Attr_CatMapper">
   <resultMap id="BaseResultMap" type="com.sf.edu.entity.S_Attr_Cat">
-    <id column="spid" jdbcType="VARCHAR" property="spid" />
+    <id column="spid" jdbcType="INTEGER" property="spid" />
     <result column="name" jdbcType="VARCHAR" property="name" />
   </resultMap>
   <sql id="Base_Column_List">
     spid, name
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from s_attr_cat
-    where spid = #{spid,jdbcType=VARCHAR}
+    where spid = #{spid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from s_attr_cat
-    where spid = #{spid,jdbcType=VARCHAR}
+    where spid = #{spid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.sf.edu.entity.S_Attr_Cat">
     insert into s_attr_cat (spid, name)
-    values (#{spid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR})
+    values (#{spid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.sf.edu.entity.S_Attr_Cat">
     insert into s_attr_cat
@@ -34,7 +34,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="spid != null">
-        #{spid,jdbcType=VARCHAR},
+        #{spid,jdbcType=INTEGER},
       </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
@@ -48,11 +48,11 @@
         name = #{name,jdbcType=VARCHAR},
       </if>
     </set>
-    where spid = #{spid,jdbcType=VARCHAR}
+    where spid = #{spid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.sf.edu.entity.S_Attr_Cat">
     update s_attr_cat
     set name = #{name,jdbcType=VARCHAR}
-    where spid = #{spid,jdbcType=VARCHAR}
+    where spid = #{spid,jdbcType=INTEGER}
   </update>
 </mapper>

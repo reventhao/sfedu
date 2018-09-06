@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sf.edu.mapper.T_attrMapper">
-  <resultMap id="BaseResultMap" type="com.sf.edu.entity.T_attr">
-    <id column="seq" jdbcType="VARCHAR" property="seq" />
-    <result column="tid" jdbcType="VARCHAR" property="tid" />
+<mapper namespace="com.sf.edu.mapper.T_AttrMapper">
+  <resultMap id="BaseResultMap" type="com.sf.edu.entity.T_Attr">
+    <id column="seq" jdbcType="INTEGER" property="seq" />
+    <result column="tid" jdbcType="INTEGER" property="tid" />
     <result column="name" jdbcType="VARCHAR" property="name" />
   </resultMap>
   <sql id="Base_Column_List">
     seq, tid, name
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from t_attr
-    where seq = #{seq,jdbcType=VARCHAR}
+    where seq = #{seq,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_attr
-    where seq = #{seq,jdbcType=VARCHAR}
+    where seq = #{seq,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.sf.edu.entity.T_attr">
+  <insert id="insert" parameterType="com.sf.edu.entity.T_Attr">
     insert into t_attr (seq, tid, name
       )
-    values (#{seq,jdbcType=VARCHAR}, #{tid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}
+    values (#{seq,jdbcType=INTEGER}, #{tid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.sf.edu.entity.T_attr">
+  <insert id="insertSelective" parameterType="com.sf.edu.entity.T_Attr">
     insert into t_attr
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="seq != null">
@@ -40,32 +40,32 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="seq != null">
-        #{seq,jdbcType=VARCHAR},
+        #{seq,jdbcType=INTEGER},
       </if>
       <if test="tid != null">
-        #{tid,jdbcType=VARCHAR},
+        #{tid,jdbcType=INTEGER},
       </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.sf.edu.entity.T_attr">
+  <update id="updateByPrimaryKeySelective" parameterType="com.sf.edu.entity.T_Attr">
     update t_attr
     <set>
       <if test="tid != null">
-        tid = #{tid,jdbcType=VARCHAR},
+        tid = #{tid,jdbcType=INTEGER},
       </if>
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
       </if>
     </set>
-    where seq = #{seq,jdbcType=VARCHAR}
+    where seq = #{seq,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.sf.edu.entity.T_attr">
+  <update id="updateByPrimaryKey" parameterType="com.sf.edu.entity.T_Attr">
     update t_attr
-    set tid = #{tid,jdbcType=VARCHAR},
+    set tid = #{tid,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR}
-    where seq = #{seq,jdbcType=VARCHAR}
+    where seq = #{seq,jdbcType=INTEGER}
   </update>
 </mapper>

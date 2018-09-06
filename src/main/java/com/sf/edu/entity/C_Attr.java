@@ -1,18 +1,18 @@
 package com.sf.edu.entity;
 
 public class C_Attr {
-    private String seq;
+    private Integer seq;
 
     private String cid;
 
     private String name;
 
-    public String getSeq() {
+    public Integer getSeq() {
         return seq;
     }
 
-    public void setSeq(String seq) {
-        this.seq = seq == null ? null : seq.trim();
+    public void setSeq(Integer seq) {
+        this.seq = seq;
     }
 
     public String getCid() {

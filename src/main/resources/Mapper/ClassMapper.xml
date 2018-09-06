@@ -2,35 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sf.edu.mapper.ClassMapper">
   <resultMap id="BaseResultMap" type="com.sf.edu.entity.Class">
-    <id column="cid" jdbcType="VARCHAR" property="cid" />
-    <result column="gid" jdbcType="VARCHAR" property="gid" />
+    <id column="cid" jdbcType="INTEGER" property="cid" />
+    <result column="gid" jdbcType="INTEGER" property="gid" />
     <result column="tid" jdbcType="VARCHAR" property="tid" />
     <result column="name" jdbcType="VARCHAR" property="name" />
   </resultMap>
   <sql id="Base_Column_List">
     cid, gid, tid, name
   </sql>
-
-  <select id="listClass" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from class
-  </select>
-
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from class
-    where cid = #{cid,jdbcType=VARCHAR}
+    where cid = #{cid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from class
-    where cid = #{cid,jdbcType=VARCHAR}
+    where cid = #{cid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.sf.edu.entity.Class">
     insert into class (cid, gid, tid, 
       name)
-    values (#{cid,jdbcType=VARCHAR}, #{gid,jdbcType=VARCHAR}, #{tid,jdbcType=VARCHAR}, 
+    values (#{cid,jdbcType=INTEGER}, #{gid,jdbcType=INTEGER}, #{tid,jdbcType=VARCHAR}, 
       #{name,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.sf.edu.entity.Class">
@@ -51,10 +44,10 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="cid != null">
-        #{cid,jdbcType=VARCHAR},
+        #{cid,jdbcType=INTEGER},
       </if>
       <if test="gid != null">
-        #{gid,jdbcType=VARCHAR},
+        #{gid,jdbcType=INTEGER},
       </if>
       <if test="tid != null">
         #{tid,jdbcType=VARCHAR},
@@ -68,7 +61,7 @@
     update class
     <set>
       <if test="gid != null">
-        gid = #{gid,jdbcType=VARCHAR},
+        gid = #{gid,jdbcType=INTEGER},
       </if>
       <if test="tid != null">
         tid = #{tid,jdbcType=VARCHAR},
@@ -77,13 +70,13 @@
         name = #{name,jdbcType=VARCHAR},
       </if>
     </set>
-    where cid = #{cid,jdbcType=VARCHAR}
+    where cid = #{cid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.sf.edu.entity.Class">
     update class
-    set gid = #{gid,jdbcType=VARCHAR},
+    set gid = #{gid,jdbcType=INTEGER},
       tid = #{tid,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR}
-    where cid = #{cid,jdbcType=VARCHAR}
+    where cid = #{cid,jdbcType=INTEGER}
   </update>
 </mapper>

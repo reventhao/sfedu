@@ -1,26 +1,26 @@
 package com.sf.edu.entity;
 
 public class S_Term {
-    private String smid;
+    private Integer smid;
 
-    private String yid;
+    private Integer yid;
 
     private String name;
 
-    public String getSmid() {
+    public Integer getSmid() {
         return smid;
     }
 
-    public void setSmid(String smid) {
-        this.smid = smid == null ? null : smid.trim();
+    public void setSmid(Integer smid) {
+        this.smid = smid;
     }
 
-    public String getYid() {
+    public Integer getYid() {
         return yid;
     }
 
-    public void setYid(String yid) {
-        this.yid = yid == null ? null : yid.trim();
+    public void setYid(Integer yid) {
+        this.yid = yid;
     }
 
     public String getName() {

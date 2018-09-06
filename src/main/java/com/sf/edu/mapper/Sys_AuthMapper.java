@@ -1,9 +1,7 @@
 package com.sf.edu.mapper;
 
 import com.sf.edu.entity.Sys_Auth;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface Sys_AuthMapper {
     int deleteByPrimaryKey(Integer lid);
 

@@ -1,43 +1,43 @@
 package com.sf.edu.entity;
 
 public class C_C_T_Rlat {
-    private String seq;
+    private Integer seq;
 
-    private String csid;
+    private Integer csid;
 
-    private String cid;
+    private Integer cid;
 
-    private String tid;
+    private Integer tid;
 
-    public String getSeq() {
+    public Integer getSeq() {
         return seq;
     }
 
-    public void setSeq(String seq) {
-        this.seq = seq == null ? null : seq.trim();
+    public void setSeq(Integer seq) {
+        this.seq = seq;
     }
 
-    public String getCsid() {
+    public Integer getCsid() {
         return csid;
     }
 
-    public void setCsid(String csid) {
-        this.csid = csid == null ? null : csid.trim();
+    public void setCsid(Integer csid) {
+        this.csid = csid;
     }
 
-    public String getCid() {
+    public Integer getCid() {
         return cid;
     }
 
-    public void setCid(String cid) {
-        this.cid = cid == null ? null : cid.trim();
+    public void setCid(Integer cid) {
+        this.cid = cid;
     }
 
-    public String getTid() {
+    public Integer getTid() {
         return tid;
     }
 
-    public void setTid(String tid) {
-        this.tid = tid == null ? null : tid.trim();
+    public void setTid(Integer tid) {
+        this.tid = tid;
     }
 }

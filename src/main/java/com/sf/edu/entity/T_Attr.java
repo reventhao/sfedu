@@ -1,9 +1,9 @@
 package com.sf.edu.entity;
 
-public class St_Attr {
+public class T_Attr {
     private Integer seq;
 
-    private String stid;
+    private Integer tid;
 
     private String name;
 
@@ -15,12 +15,12 @@ public class St_Attr {
         this.seq = seq;
     }
 
-    public String getStid() {
-        return stid;
+    public Integer getTid() {
+        return tid;
     }
 
-    public void setStid(String stid) {
-        this.stid = stid == null ? null : stid.trim();
+    public void setTid(Integer tid) {
+        this.tid = tid;
     }
 
     public String getName() {

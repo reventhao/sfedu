@@ -1,16 +1,16 @@
 package com.sf.edu.entity;
 
 public class Teacher {
-    private String tid;
+    private Integer tid;
 
     private String name;
 
-    public String getTid() {
+    public Integer getTid() {
         return tid;
     }
 
-    public void setTid(String tid) {
-        this.tid = tid == null ? null : tid.trim();
+    public void setTid(Integer tid) {
+        this.tid = tid;
     }
 
     public String getName() {

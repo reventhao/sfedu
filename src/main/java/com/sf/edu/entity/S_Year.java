@@ -1,16 +1,16 @@
 package com.sf.edu.entity;
 
 public class S_Year {
-    private String yid;
+    private Integer yid;
 
     private String invl;
 
-    public String getYid() {
+    public Integer getYid() {
         return yid;
     }
 
-    public void setYid(String yid) {
-        this.yid = yid == null ? null : yid.trim();
+    public void setYid(Integer yid) {
+        this.yid = yid;
     }
 
     public String getInvl() {

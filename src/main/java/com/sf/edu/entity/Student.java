@@ -5,7 +5,7 @@ public class Student {
 
     private String ssid;
 
-    private String cid;
+    private Integer cid;
 
     private String name;
 
@@ -25,12 +25,12 @@ public class Student {
         this.ssid = ssid == null ? null : ssid.trim();
     }
 
-    public String getCid() {
+    public Integer getCid() {
         return cid;
     }
 
-    public void setCid(String cid) {
-        this.cid = cid == null ? null : cid.trim();
+    public void setCid(Integer cid) {
+        this.cid = cid;
     }
 
     public String getName() {

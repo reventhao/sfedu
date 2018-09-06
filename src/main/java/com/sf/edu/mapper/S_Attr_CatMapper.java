@@ -1,17 +1,15 @@
 package com.sf.edu.mapper;
 
 import com.sf.edu.entity.S_Attr_Cat;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface S_Attr_CatMapper {
-    int deleteByPrimaryKey(String spid);
+    int deleteByPrimaryKey(Integer spid);
 
     int insert(S_Attr_Cat record);
 
     int insertSelective(S_Attr_Cat record);
 
-    S_Attr_Cat selectByPrimaryKey(String spid);
+    S_Attr_Cat selectByPrimaryKey(Integer spid);
 
     int updateByPrimaryKeySelective(S_Attr_Cat record);
 

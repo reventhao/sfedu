@@ -1,18 +1,15 @@
 package com.sf.edu.entity;
 
 public class Area {
-    private int aid;
+    private Integer aid;
 
     private String name;
 
-    public Area() {
-    }
-
-    public int getAid() {
+    public Integer getAid() {
         return aid;
     }
 
-    public void setAid(int aid) {
+    public void setAid(Integer aid) {
         this.aid = aid;
     }
 

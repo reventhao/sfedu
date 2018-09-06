@@ -1,16 +1,16 @@
 package com.sf.edu.entity;
 
 public class Course {
-    private String csid;
+    private Integer csid;
 
     private String name;
 
-    public String getCsid() {
+    public Integer getCsid() {
         return csid;
     }
 
-    public void setCsid(String csid) {
-        this.csid = csid == null ? null : csid.trim();
+    public void setCsid(Integer csid) {
+        this.csid = csid;
     }
 
     public String getName() {

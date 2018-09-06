@@ -2,27 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sf.edu.mapper.C_AttrMapper">
   <resultMap id="BaseResultMap" type="com.sf.edu.entity.C_Attr">
-    <id column="seq" jdbcType="VARCHAR" property="seq" />
+    <id column="seq" jdbcType="INTEGER" property="seq" />
     <result column="cid" jdbcType="VARCHAR" property="cid" />
     <result column="name" jdbcType="VARCHAR" property="name" />
   </resultMap>
   <sql id="Base_Column_List">
     seq, cid, name
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from c_attr
-    where seq = #{seq,jdbcType=VARCHAR}
+    where seq = #{seq,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from c_attr
-    where seq = #{seq,jdbcType=VARCHAR}
+    where seq = #{seq,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.sf.edu.entity.C_Attr">
     insert into c_attr (seq, cid, name
       )
-    values (#{seq,jdbcType=VARCHAR}, #{cid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}
+    values (#{seq,jdbcType=INTEGER}, #{cid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.sf.edu.entity.C_Attr">
@@ -40,7 +40,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="seq != null">
-        #{seq,jdbcType=VARCHAR},
+        #{seq,jdbcType=INTEGER},
       </if>
       <if test="cid != null">
         #{cid,jdbcType=VARCHAR},
@@ -60,12 +60,12 @@
         name = #{name,jdbcType=VARCHAR},
       </if>
     </set>
-    where seq = #{seq,jdbcType=VARCHAR}
+    where seq = #{seq,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.sf.edu.entity.C_Attr">
     update c_attr
     set cid = #{cid,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR}
-    where seq = #{seq,jdbcType=VARCHAR}
+    where seq = #{seq,jdbcType=INTEGER}
   </update>
 </mapper>

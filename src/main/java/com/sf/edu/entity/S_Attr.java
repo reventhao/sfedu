@@ -1,28 +1,28 @@
 package com.sf.edu.entity;
 
 public class S_Attr {
-    private String seq;
+    private Integer seq;
 
-    private String sid;
+    private Integer sid;
 
     private String name;
 
-    private String spid;
+    private Integer spid;
 
-    public String getSeq() {
+    public Integer getSeq() {
         return seq;
     }
 
-    public void setSeq(String seq) {
-        this.seq = seq == null ? null : seq.trim();
+    public void setSeq(Integer seq) {
+        this.seq = seq;
     }
 
-    public String getSid() {
+    public Integer getSid() {
         return sid;
     }
 
-    public void setSid(String sid) {
-        this.sid = sid == null ? null : sid.trim();
+    public void setSid(Integer sid) {
+        this.sid = sid;
     }
 
     public String getName() {
@@ -33,11 +33,11 @@ public class S_Attr {
         this.name = name == null ? null : name.trim();
     }
 
-    public String getSpid() {
+    public Integer getSpid() {
         return spid;
     }
 
-    public void setSpid(String spid) {
-        this.spid = spid == null ? null : spid.trim();
+    public void setSpid(Integer spid) {
+        this.spid = spid;
     }
 }

@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.sf.edu.entity.Student">
     <id column="stid" jdbcType="VARCHAR" property="stid" />
     <result column="ssid" jdbcType="VARCHAR" property="ssid" />
-    <result column="cid" jdbcType="VARCHAR" property="cid" />
+    <result column="cid" jdbcType="INTEGER" property="cid" />
     <result column="name" jdbcType="VARCHAR" property="name" />
   </resultMap>
   <sql id="Base_Column_List">
@@ -23,7 +23,7 @@
   <insert id="insert" parameterType="com.sf.edu.entity.Student">
     insert into student (stid, ssid, cid, 
       name)
-    values (#{stid,jdbcType=VARCHAR}, #{ssid,jdbcType=VARCHAR}, #{cid,jdbcType=VARCHAR}, 
+    values (#{stid,jdbcType=VARCHAR}, #{ssid,jdbcType=VARCHAR}, #{cid,jdbcType=INTEGER}, 
       #{name,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.sf.edu.entity.Student">
@@ -50,7 +50,7 @@
         #{ssid,jdbcType=VARCHAR},
       </if>
       <if test="cid != null">
-        #{cid,jdbcType=VARCHAR},
+        #{cid,jdbcType=INTEGER},
       </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
@@ -64,7 +64,7 @@
         ssid = #{ssid,jdbcType=VARCHAR},
       </if>
       <if test="cid != null">
-        cid = #{cid,jdbcType=VARCHAR},
+        cid = #{cid,jdbcType=INTEGER},
       </if>
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
@@ -75,7 +75,7 @@
   <update id="updateByPrimaryKey" parameterType="com.sf.edu.entity.Student">
     update student
     set ssid = #{ssid,jdbcType=VARCHAR},
-      cid = #{cid,jdbcType=VARCHAR},
+      cid = #{cid,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR}
     where stid = #{stid,jdbcType=VARCHAR}
   </update>

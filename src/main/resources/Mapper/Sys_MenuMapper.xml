@@ -3,7 +3,7 @@
 <mapper namespace="com.sf.edu.mapper.Sys_MenuMapper">
   <resultMap id="BaseResultMap" type="com.sf.edu.entity.Sys_Menu">
     <id column="seq" jdbcType="INTEGER" property="seq" />
-    <result column="mid" jdbcType="VARCHAR" property="mid" />
+    <result column="mid" jdbcType="INTEGER" property="mid" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="level" jdbcType="VARCHAR" property="level" />
     <result column="link" jdbcType="VARCHAR" property="link" />
@@ -14,13 +14,6 @@
   <sql id="Base_Column_List">
     seq, mid, name, level, link, umenu, ltarget, remark
   </sql>
-
-  <select id="listSys_Menu" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from sys_menu
-  </select>
-
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -35,7 +28,7 @@
     insert into sys_menu (seq, mid, name, 
       level, link, umenu, 
       ltarget, remark)
-    values (#{seq,jdbcType=INTEGER}, #{mid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+    values (#{seq,jdbcType=INTEGER}, #{mid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
       #{level,jdbcType=VARCHAR}, #{link,jdbcType=VARCHAR}, #{umenu,jdbcType=VARCHAR}, 
       #{ltarget,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
   </insert>
@@ -72,7 +65,7 @@
         #{seq,jdbcType=INTEGER},
       </if>
       <if test="mid != null">
-        #{mid,jdbcType=VARCHAR},
+        #{mid,jdbcType=INTEGER},
       </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
@@ -98,7 +91,7 @@
     update sys_menu
     <set>
       <if test="mid != null">
-        mid = #{mid,jdbcType=VARCHAR},
+        mid = #{mid,jdbcType=INTEGER},
       </if>
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
@@ -123,7 +116,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.sf.edu.entity.Sys_Menu">
     update sys_menu
-    set mid = #{mid,jdbcType=VARCHAR},
+    set mid = #{mid,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
       level = #{level,jdbcType=VARCHAR},
       link = #{link,jdbcType=VARCHAR},

@@ -2,47 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sf.edu.mapper.AreaMapper">
   <resultMap id="BaseResultMap" type="com.sf.edu.entity.Area">
-    <id column="aid" jdbcType="VARCHAR" property="aid" />
+    <id column="aid" jdbcType="INTEGER" property="aid" />
     <result column="name" jdbcType="VARCHAR" property="name" />
   </resultMap>
   <sql id="Base_Column_List">
     aid, name
   </sql>
-
-  <select id="listArea" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from area
-  </select>
-
-  <select id="selectCount" resultType="java.lang.Integer">
-    select
-    count(aid)
-    from area
-  </select>
-
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from area
-    where aid = #{aid,jdbcType=VARCHAR}
+    where aid = #{aid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from area
-    where aid = #{aid,jdbcType=VARCHAR}
+    where aid = #{aid,jdbcType=INTEGER}
   </delete>
-
-  <delete id="deleteRecordsByPrimary" parameterType="java.util.List">
-    delete from area
-    where aid in
-    <foreach collection="list" item="aid" index="index" open="(" separator="," close=")">
-      #{aid,jdbcType=INTEGER}
-    </foreach>
-  </delete>
-
   <insert id="insert" parameterType="com.sf.edu.entity.Area">
-    insert into area (name)
-    values (#{name,jdbcType=VARCHAR})
+    insert into area (aid, name)
+    values (#{aid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.sf.edu.entity.Area">
     insert into area
@@ -56,7 +34,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="aid != null">
-        #{aid,jdbcType=VARCHAR},
+        #{aid,jdbcType=INTEGER},
       </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
@@ -70,11 +48,11 @@
         name = #{name,jdbcType=VARCHAR},
       </if>
     </set>
-    where aid = #{aid,jdbcType=VARCHAR}
+    where aid = #{aid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.sf.edu.entity.Area">
     update area
     set name = #{name,jdbcType=VARCHAR}
-    where aid = #{aid,jdbcType=VARCHAR}
+    where aid = #{aid,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -1,18 +1,18 @@
 package com.sf.edu.entity;
 
 public class School {
-    private int sid;
+    private Integer sid;
 
     private String name;
 
-    private int aid;
+    private Integer aid;
 
-    public int getSid() {
+    public Integer getSid() {
         return sid;
     }
 
-    public void setSid(int sid) {
-        this.sid =sid;
+    public void setSid(Integer sid) {
+        this.sid = sid;
     }
 
     public String getName() {
@@ -23,11 +23,11 @@ public class School {
         this.name = name == null ? null : name.trim();
     }
 
-    public int getAid() {
+    public Integer getAid() {
         return aid;
     }
 
-    public void setAid(int aid) {
-        this.aid =aid;
+    public void setAid(Integer aid) {
+        this.aid = aid;
     }
 }

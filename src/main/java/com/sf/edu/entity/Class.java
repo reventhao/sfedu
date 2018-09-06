@@ -1,28 +1,28 @@
 package com.sf.edu.entity;
 
 public class Class {
-    private String cid;
+    private Integer cid;
 
-    private String gid;
+    private Integer gid;
 
     private String tid;
 
     private String name;
 
-    public String getCid() {
+    public Integer getCid() {
         return cid;
     }
 
-    public void setCid(String cid) {
-        this.cid = cid == null ? null : cid.trim();
+    public void setCid(Integer cid) {
+        this.cid = cid;
     }
 
-    public String getGid() {
+    public Integer getGid() {
         return gid;
     }
 
-    public void setGid(String gid) {
-        this.gid = gid == null ? null : gid.trim();
+    public void setGid(Integer gid) {
+        this.gid = gid;
     }
 
     public String getTid() {

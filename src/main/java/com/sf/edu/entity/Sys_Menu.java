@@ -3,7 +3,7 @@ package com.sf.edu.entity;
 public class Sys_Menu {
     private Integer seq;
 
-    private String mid;
+    private Integer mid;
 
     private String name;
 
@@ -25,12 +25,12 @@ public class Sys_Menu {
         this.seq = seq;
     }
 
-    public String getMid() {
+    public Integer getMid() {
         return mid;
     }
 
-    public void setMid(String mid) {
-        this.mid = mid == null ? null : mid.trim();
+    public void setMid(Integer mid) {
+        this.mid = mid;
     }
 
     public String getName() {

@@ -2,29 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sf.edu.mapper.C_C_T_RlatMapper">
   <resultMap id="BaseResultMap" type="com.sf.edu.entity.C_C_T_Rlat">
-    <id column="seq" jdbcType="VARCHAR" property="seq" />
-    <result column="csid" jdbcType="VARCHAR" property="csid" />
-    <result column="cid" jdbcType="VARCHAR" property="cid" />
-    <result column="tid" jdbcType="VARCHAR" property="tid" />
+    <id column="seq" jdbcType="INTEGER" property="seq" />
+    <result column="csid" jdbcType="INTEGER" property="csid" />
+    <result column="cid" jdbcType="INTEGER" property="cid" />
+    <result column="tid" jdbcType="INTEGER" property="tid" />
   </resultMap>
   <sql id="Base_Column_List">
     seq, csid, cid, tid
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from c_c_t_rlat
-    where seq = #{seq,jdbcType=VARCHAR}
+    where seq = #{seq,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from c_c_t_rlat
-    where seq = #{seq,jdbcType=VARCHAR}
+    where seq = #{seq,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.sf.edu.entity.C_C_T_Rlat">
     insert into c_c_t_rlat (seq, csid, cid, 
       tid)
-    values (#{seq,jdbcType=VARCHAR}, #{csid,jdbcType=VARCHAR}, #{cid,jdbcType=VARCHAR}, 
-      #{tid,jdbcType=VARCHAR})
+    values (#{seq,jdbcType=INTEGER}, #{csid,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, 
+      #{tid,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.sf.edu.entity.C_C_T_Rlat">
     insert into c_c_t_rlat
@@ -44,16 +44,16 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="seq != null">
-        #{seq,jdbcType=VARCHAR},
+        #{seq,jdbcType=INTEGER},
       </if>
       <if test="csid != null">
-        #{csid,jdbcType=VARCHAR},
+        #{csid,jdbcType=INTEGER},
       </if>
       <if test="cid != null">
-        #{cid,jdbcType=VARCHAR},
+        #{cid,jdbcType=INTEGER},
       </if>
       <if test="tid != null">
-        #{tid,jdbcType=VARCHAR},
+        #{tid,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -61,22 +61,22 @@
     update c_c_t_rlat
     <set>
       <if test="csid != null">
-        csid = #{csid,jdbcType=VARCHAR},
+        csid = #{csid,jdbcType=INTEGER},
       </if>
       <if test="cid != null">
-        cid = #{cid,jdbcType=VARCHAR},
+        cid = #{cid,jdbcType=INTEGER},
       </if>
       <if test="tid != null">
-        tid = #{tid,jdbcType=VARCHAR},
+        tid = #{tid,jdbcType=INTEGER},
       </if>
     </set>
-    where seq = #{seq,jdbcType=VARCHAR}
+    where seq = #{seq,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.sf.edu.entity.C_C_T_Rlat">
     update c_c_t_rlat
-    set csid = #{csid,jdbcType=VARCHAR},
-      cid = #{cid,jdbcType=VARCHAR},
-      tid = #{tid,jdbcType=VARCHAR}
-    where seq = #{seq,jdbcType=VARCHAR}
+    set csid = #{csid,jdbcType=INTEGER},
+      cid = #{cid,jdbcType=INTEGER},
+      tid = #{tid,jdbcType=INTEGER}
+    where seq = #{seq,jdbcType=INTEGER}
   </update>
 </mapper>

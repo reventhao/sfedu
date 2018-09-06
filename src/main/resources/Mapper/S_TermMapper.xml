@@ -2,27 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sf.edu.mapper.S_TermMapper">
   <resultMap id="BaseResultMap" type="com.sf.edu.entity.S_Term">
-    <id column="smid" jdbcType="VARCHAR" property="smid" />
-    <result column="yid" jdbcType="VARCHAR" property="yid" />
+    <id column="smid" jdbcType="INTEGER" property="smid" />
+    <result column="yid" jdbcType="INTEGER" property="yid" />
     <result column="name" jdbcType="VARCHAR" property="name" />
   </resultMap>
   <sql id="Base_Column_List">
     smid, yid, name
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from s_term
-    where smid = #{smid,jdbcType=VARCHAR}
+    where smid = #{smid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from s_term
-    where smid = #{smid,jdbcType=VARCHAR}
+    where smid = #{smid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.sf.edu.entity.S_Term">
     insert into s_term (smid, yid, name
       )
-    values (#{smid,jdbcType=VARCHAR}, #{yid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}
+    values (#{smid,jdbcType=INTEGER}, #{yid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.sf.edu.entity.S_Term">
@@ -40,10 +40,10 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="smid != null">
-        #{smid,jdbcType=VARCHAR},
+        #{smid,jdbcType=INTEGER},
       </if>
       <if test="yid != null">
-        #{yid,jdbcType=VARCHAR},
+        #{yid,jdbcType=INTEGER},
       </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
@@ -54,18 +54,18 @@
     update s_term
     <set>
       <if test="yid != null">
-        yid = #{yid,jdbcType=VARCHAR},
+        yid = #{yid,jdbcType=INTEGER},
       </if>
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
       </if>
     </set>
-    where smid = #{smid,jdbcType=VARCHAR}
+    where smid = #{smid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.sf.edu.entity.S_Term">
     update s_term
-    set yid = #{yid,jdbcType=VARCHAR},
+    set yid = #{yid,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR}
-    where smid = #{smid,jdbcType=VARCHAR}
+    where smid = #{smid,jdbcType=INTEGER}
   </update>
 </mapper>
