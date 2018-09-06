@@ -14,14 +14,23 @@ public interface SchoolService {
 
     /**
      *
+     * @return
+     */
+    public int getCount();
+
+    /**
+     *
      *
      * @return
      */
     public int saveSchool(School school);
 
-    public int getCount();
-
     public School selectSchool(int sid);
 
     public int removeRecords(List<Integer> records);
+
+    public int removeRecord(int sid);
+
+    public int saveRecords(List<School> records);
 }
+

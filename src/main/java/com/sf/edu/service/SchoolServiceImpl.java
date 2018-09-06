@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional
 public class SchoolServiceImpl implements SchoolService {
 
     @Autowired
@@ -21,6 +20,7 @@ public class SchoolServiceImpl implements SchoolService {
     }
 
     @Override
+    @Transactional
     public int saveSchool(School record) {
         int count = schoolMapper.insert(record);
         return count;
@@ -32,8 +32,8 @@ public class SchoolServiceImpl implements SchoolService {
     }
 
     @Override
-    public School selectSchool(int sid) {
-        return schoolMapper.selectByPrimaryKey(sid);
+    public School selectSchool(int aid) {
+        return schoolMapper.selectByPrimaryKey(aid);
     }
 
     @Override
@@ -41,5 +41,16 @@ public class SchoolServiceImpl implements SchoolService {
         int count = schoolMapper.deleteRecordsByPrimaryKey(records);
         return count;
     }
-}
 
+    @Override
+    public int saveRecords(List<School> records) {
+        int count = schoolMapper.insertRecords(records);
+        return count;
+    }
+
+    @Override
+    public int removeRecord(int aid) {
+        int count = schoolMapper.deleteByPrimaryKey(aid);
+        return count;
+    }
+}

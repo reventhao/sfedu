@@ -4,10 +4,10 @@
     <resultMap id="BaseResultMap" type="com.sf.edu.entity.School">
         <id column="sid" jdbcType="INTEGER" property="sid"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
-        <result column="aid" jdbcType="INTEGER" property="aid"/>
+        <result column="sid" jdbcType="INTEGER" property="sid"/>
     </resultMap>
     <sql id="Base_Column_List">
-    sid, name, aid
+    sid, name, sid
   </sql>
 
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -40,10 +40,8 @@
     </delete>
 
     <insert id="insert" parameterType="com.sf.edu.entity.School">
-    insert into school (sid, name, aid
-      )
-    values (#{sid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{aid,jdbcType=INTEGER}
-      )
+    insert into school (sid, name)
+    values (#{sid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR})
   </insert>
     <insert id="insertSelective" parameterType="com.sf.edu.entity.School">
         insert into school
@@ -54,46 +52,38 @@
             <if test="name != null">
                 name,
             </if>
-            <if test="aid != null">
-                aid,
-            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="sid != null">
                 #{sid,jdbcType=INTEGER},
-            </if>
-            <if test="aid != null">
-                #{aid,jdbcType=INTEGER},
             </if>
             <if test="name != null">
                 #{name,jdbcType=VARCHAR},
             </if>
         </trim>
     </insert>
+
     <insert id="insertRecords" parameterType="com.sf.edu.entity.School">
         insert into school
-        (aid,name)
+        (name)
         VALUES
         <foreach collection="list" item="school" separator=",">
-            (#{school.aid},#{school.name})
+            (#{school.name})
         </foreach>
     </insert>
+
     <update id="updateByPrimaryKeySelective" parameterType="com.sf.edu.entity.School">
         update school
         <set>
             <if test="name != null">
                 name = #{name,jdbcType=VARCHAR},
             </if>
-            <if test="aid != null">
-                aid = #{aid,jdbcType=INTEGER},
-            </if>
         </set>
         where sid = #{sid,jdbcType=INTEGER}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.sf.edu.entity.School">
     update school
-    set name = #{name,jdbcType=VARCHAR},
-      aid = #{aid,jdbcType=INTEGER}
+    set name = #{name,jdbcType=VARCHAR}
     where sid = #{sid,jdbcType=INTEGER}
   </update>
 </mapper>

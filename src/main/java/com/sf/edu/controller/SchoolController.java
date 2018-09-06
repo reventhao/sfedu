@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,7 +23,7 @@ public class SchoolController {
     @Autowired
     private SchoolService schoolService;
 
-    private static final Logger logger= LoggerFactory.getLogger(SchoolController.class);
+    private static final Logger logger = LoggerFactory.getLogger(SchoolController.class);
 
     @RequestMapping(value = "school_page")
     public ModelAndView schoolPage() {
@@ -43,7 +44,7 @@ public class SchoolController {
 
     @RequestMapping(value = "saveschool")
     @ResponseBody
-    public String saveSchool(School school) {
+    public String saveSchool(@RequestParam School school) {
         try {
             schoolService.saveSchool(school);
             return "success";
@@ -53,16 +54,40 @@ public class SchoolController {
 
     }
 
-    @RequestMapping(value = "batchput")
+    @RequestMapping(value = "deleterecord")
     @ResponseBody
-    public String batchPut(@RequestBody List<School> list) {
+    public String deleteRecord(@RequestParam int sid){
+        try {
+            schoolService.removeRecord(sid);
+            logger.info("批量导入记录");
+            return "success";
+        } catch (Exception e) {
+            return "error";
+        }
+    }
+
+    @RequestMapping(value = "deleterecords")
+    @ResponseBody
+    public String deleteRecords(@RequestBody List<School> list) {
         List<Integer> records = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
-            records.add(list.get(i).getAid());
+            records.add(list.get(i).getSid());
         }
         try {
             schoolService.removeRecords(records);
             logger.info("批量删除记录");
+            return "success";
+        } catch (Exception e) {
+            return "error";
+        }
+    }
+
+    @RequestMapping(value = "saverecords")
+    @ResponseBody
+    public String saveRecords(@RequestBody List<School> records) {
+        try {
+            schoolService.saveRecords(records);
+            logger.info("批量导入记录");
             return "success";
         } catch (Exception e) {
             return "error";
