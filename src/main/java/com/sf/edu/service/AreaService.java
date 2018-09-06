@@ -15,10 +15,16 @@ public interface AreaService {
 
     /**
      *
+     * @return
+     */
+    public int getCount();
+
+    /**
+     *
      *
      * @return
      */
     public int saveArea(Area area);
 
-
+    public Area selectArea(String aid);
 }

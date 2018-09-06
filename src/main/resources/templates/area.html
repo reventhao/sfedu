@@ -1,176 +1,190 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<title>盛方阅卷系统-学区信息</title>
-		<link rel="stylesheet" href="/layui/css/layui.css">
-	</head>
-	<script src="/layui/layui.js"></script>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>盛方阅卷系统-学区信息</title>
+    <link rel="stylesheet" href="/layui/css/layui.css">
+</head>
+<script src="/layui/layui.js"></script>
 
-	<body class="layui-layout-body">
-		<div class="layui-layout layui-layout-admin">
-			<div class="layui-header">
-				<div class="layui-logo">后台管理</div>
-				<!-- 头部区域（可配合layui已有的水平导航） -->
-				<ul class="layui-nav layui-layout-left">
-					<li class="layui-nav-item">
-						<a href="">控制台</a>
-					</li>
-					<li class="layui-nav-item">
-						<a href="">商品管理</a>
-					</li>
-					<li class="layui-nav-item">
-						<a href="">用户</a>
-					</li>
-					<li class="layui-nav-item">
-						<a href="javascript:;">其它系统</a>
-						<dl class="layui-nav-child">
-							<dd>
-								<a href="">邮件管理</a>
-							</dd>
-							<dd>
-								<a href="">消息管理</a>
-							</dd>
-							<dd>
-								<a href="">授权管理</a>
-							</dd>
-						</dl>
-					</li>
-				</ul>
-				<ul class="layui-nav layui-layout-right">
-					<li class="layui-nav-item">
-						<a href="javascript:;">
-							<img src="http://t.cn/RCzsdCq" class="layui-nav-img"> 管理员
-						</a>
-						<dl class="layui-nav-child">
-							<dd>
-								<a href="">基本资料</a>
-							</dd>
-							<dd>
-								<a href="">安全设置</a>
-							</dd>
-						</dl>
-					</li>
-					<li class="layui-nav-item">
-						<a href="">退出</a>
-					</li>
-				</ul>
-			</div>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">后台管理</div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item">
+                <a href="">控制台</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="">商品管理</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="">用户</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">其它系统</a>
+                <dl class="layui-nav-child">
+                    <dd>
+                        <a href="">邮件管理</a>
+                    </dd>
+                    <dd>
+                        <a href="">消息管理</a>
+                    </dd>
+                    <dd>
+                        <a href="">授权管理</a>
+                    </dd>
+                </dl>
+            </li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img"> 管理员
+                </a>
+                <dl class="layui-nav-child">
+                    <dd>
+                        <a href="">基本资料</a>
+                    </dd>
+                    <dd>
+                        <a href="">安全设置</a>
+                    </dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a href="">退出</a>
+            </li>
+        </ul>
+    </div>
 
-			<div class="layui-side layui-bg-black">
-				<div class="layui-side-scroll">
-					<ul class="layui-nav layui-nav-tree" lay-filter="test">
-						<li class="layui-nav-item layui-nav-itemed">
-							<a class="" href="javascript:;">基础信息配置</a>
-							<dl class="layui-nav-child">
-								<dd class="layui-this">
-									<a href="/area/area_page">学区信息</a>
-								</dd>
-								<dd>
-									<a href="/school/school_page">学校信息</a>
-								</dd>
-								<dd>
-									<a href="/grade/grade_page">年级信息</a>
-								</dd>
-								<dd>
-									<a href="/class/class_page">班级信息</a>
-								</dd>
-							</dl>
-						</li>
-						<li class="layui-nav-item">
-							<a href="javascript:;">教师信息配置</a>
-						</li>
-						<li class="layui-nav-item">
-							<a href="javascript:;">学生信息配置</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<!--页面标签-->
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">基础信息配置</a>
+                    <dl class="layui-nav-child">
+                        <dd class="layui-this">
+                            <a href="/area/area_page">学区信息</a>
+                        </dd>
+                        <dd>
+                            <a href="/school/school_page">学校信息</a>
+                        </dd>
+                        <dd>
+                            <a href="/grade/grade_page">年级信息</a>
+                        </dd>
+                        <dd>
+                            <a href="/class/class_page">班级信息</a>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">教师信息配置</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">学生信息配置</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--页面标签-->
 
-			<div class="layui-body">
-				<!-- 内容主体区域 -->
-				<div style="padding: 15px;">
-					<!--学区信息-->
-					<div class="">
-						<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-							<legend>学区信息导入</legend>
-						</fieldset>
-						<form class="layui-form" action="">
-							<div class="layui-form-item">
-								<div class="layui-input-block">
-									<input name="dis_name" lay-verify="required" placeholder="请输入学区名称" autocomplete="off" class="layui-input" type="text" style="width: 400px;">
-								</div>
-							</div>
-							<div class="layui-form-item">
-								<div class="layui-input-block">
-									<button class="layui-btn" lay-submit="" lay-filter="demo1">提交</button>
-									<button type="reset" class="layui-btn layui-btn-primary">重置</button>
-								</div>
-							</div>
-						</form>
-						<!--学区表单-->
-						<table class="layui-table" lay-data="{width: 800, height:332, url:'/demo/table/user/', page:true, id:'idTest'}" lay-filter="demo">
-							<thead>
-								<tr>
-									<th lay-data="{type:'checkbox', fixed: 'left'}"></th>
-									<th lay-data="{field:'id', width:120, sort: true, fixed: true}">学区编号</th>
-									<th lay-data="{field:'username', width:120}">学区名称</th>
-								</tr>
-							</thead>
-						</table>
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div style="padding: 15px;">
+            <!--学区信息-->
+            <div class="">
+                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                    <legend>学区信息导入</legend>
+                </fieldset>
+                <form class="layui-form" action="" lay-filter="area_form">
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <input name="name" id="name" lay-verify="required" placeholder="请输入学区名称"
+                                   autocomplete="off"
+                                   class="layui-input" type="text" style="width: 400px;">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit="" lay-filter="demo1">提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+                <!--学区表单-->
+                <table class="layui-table" lay-filter="areatable" id="areatable">
+                </table>
 
-						<script type="text/html" id="barDemo">
-							<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-							<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-						</script>
+                <script type="text/html" id="barDemo">
+                    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+                    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+                </script>
 
-						<script src="//res.layui.com/layui/dist/layui.js" charset="utf-8"></script>
+                <script src="/layui/layui.js" charset="utf-8"></script>
+                <script>
+                    layui.use(['table', 'form', 'layer', 'jquery'], function () {
+                        var table = layui.table;
+                        var form = layui.form;
+                        var layer = layui.layer;
+                        var $ = jQuery = layui.$;
+                        var name = $("#name");
+                        form.on('submit(area_form)', function (data) {
+                            $.ajax({
+                                url: "/area/savearea",
+                                data: {name: name.val()},
+                                success: function (data) {
+                                    layer.open({
+                                        content: "添加成功",
+                                        time: 1000
+                                    })
+                                }
+                            })
+                            return false;
+                        });
+                        //第一个实例
+                        table.render({
+                            elem: '#areatable'
+                            , height: 312
+                            , width: 800
+                            , url: '/area/listarea' //数据接口
+                            , page: true //开启分页
+                            , cols: [
+                                [ //表头
+                                    {field: 'aid', title: 'ID', width: 300, sort: true, fixed: 'left'}
+                                    , {field: 'name', title: '用户名', width: 299}
+                                    , {fixed: 'right', width: 200, align: 'center', toolbar: '#barDemo'}
+                                ]
+                            ]
+                        });
+                        table.on('tool(areatable)', function (obj) {
+                            var data = obj.data;
+                            if (obj.event === 'del') {
+                                layer.confirm('真的删除行么', function (index) {
+                                    obj.del();
+                                    layer.close(index);
+                                });
+                            } else if (obj.event === 'edit') {
+                                layer.alert('编辑行：<br>' + JSON.stringify(data))
+                            }
+                        });
+                    })
+                </script>
+            </div>
+        </div>
+    </div>
 
-						<script>
-							layui.use('table', function() {
-								var table = layui.table;
-								//监听表格复选框选择
-								table.on('checkbox(demo)', function(obj) {
-									console.log(obj)
-								});
-								//监听工具条
-								table.on('tool(demo)', function(obj) {
-									var data = obj.data;
-									if(obj.event === 'del') {
-										layer.confirm('真的删除行么', function(index) {
-											obj.del();
-											layer.close(index);
-										});
-									} else if(obj.event === 'edit') {
-										layer.alert('编辑行：<br>' + JSON.stringify(data))
-									}
-								});
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        <span>© 盛方网上阅卷系统</span>
+    </div>
+</div>
 
-							});
-						</script>
-
-						<script>
-							layui.use("form", function() {
-								var form = layui.form;
-							})
-						</script>
-					</div>
-				</div>
-			</div>
-
-			<div class="layui-footer">
-				<!-- 底部固定区域 -->
-				<span>© 盛方网上阅卷系统</span>
-			</div>
-		</div>
-
-		<script>
-			layui.use('element', function() {
-				var element = layui.element;
-			});
-		</script>
-	</body>
+<script>
+    layui.use('element', function () {
+        var element = layui.element;
+    });
+</script>
+</body>
 </html>
 

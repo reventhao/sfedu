@@ -11,6 +11,8 @@ public interface AreaMapper {
 
     List<Area> listArea();
 
+    int selectCount();
+
     int deleteByPrimaryKey(String aid);
 
     int insert(Area record);

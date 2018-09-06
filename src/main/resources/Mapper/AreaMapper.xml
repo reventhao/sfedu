@@ -8,6 +8,19 @@
   <sql id="Base_Column_List">
     aid, name
   </sql>
+
+  <select id="listArea" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from area
+  </select>
+
+  <select id="selectCount" resultType="java.lang.Integer">
+    select
+    count(aid)
+    from area
+  </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

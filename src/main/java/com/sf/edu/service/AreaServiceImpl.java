@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class AreaServiceImpl implements AreaService {
 
     @Autowired
     private AreaMapper areaMapper;
+
     @Override
     public List<Area> listArea() {
         return areaMapper.listArea();
@@ -20,5 +22,15 @@ public class AreaServiceImpl implements AreaService {
     public int saveArea(Area record) {
         int count = areaMapper.insert(record);
         return count;
+    }
+
+    @Override
+    public int getCount() {
+        return areaMapper.selectCount();
+    }
+
+    @Override
+    public Area selectArea(String aid) {
+        return areaMapper.selectByPrimaryKey(aid);
     }
 }
