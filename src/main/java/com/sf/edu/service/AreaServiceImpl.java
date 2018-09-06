@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional
 public class AreaServiceImpl implements AreaService {
 
     @Autowired
@@ -21,6 +20,7 @@ public class AreaServiceImpl implements AreaService {
     }
 
     @Override
+    @Transactional
     public int saveArea(Area record) {
         int count = areaMapper.insert(record);
         return count;
@@ -37,18 +37,21 @@ public class AreaServiceImpl implements AreaService {
     }
 
     @Override
+    @Transactional
     public int removeRecords(List<Integer> records) {
         int count = areaMapper.deleteRecordsByPrimaryKey(records);
         return count;
     }
 
     @Override
+    @Transactional
     public int saveRecords(List<Area> records) {
         int count = areaMapper.insertRecords(records);
         return count;
     }
 
     @Override
+    @Transactional
     public int removeRecord(int aid) {
         int count = areaMapper.deleteByPrimaryKey(aid);
         return count;
