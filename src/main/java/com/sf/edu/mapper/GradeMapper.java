@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface GradeMapper {
+
     int deleteByPrimaryKey(Integer gid);
 
     int deleteRecordsByPrimaryKey(List<Integer> records);

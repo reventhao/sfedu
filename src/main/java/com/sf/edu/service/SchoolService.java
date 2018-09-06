@@ -18,4 +18,10 @@ public interface SchoolService {
      * @return
      */
     public int saveSchool(School school);
+
+    public int getCount();
+
+    public School selectSchool(int sid);
+
+    public int removeRecords(List<Integer> records);
 }

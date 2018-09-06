@@ -9,6 +9,7 @@
     <sql id="Base_Column_List">
     sid, name, aid
   </sql>
+
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
@@ -20,6 +21,7 @@
         <include refid="Base_Column_List"/>
         from school
     </select>
+
     <select id="selectCount" resultType="java.lang.Integer">
         select count(sid)
         from school
@@ -28,6 +30,7 @@
     delete from school
     where sid = #{sid,jdbcType=INTEGER}
   </delete>
+
     <delete id="deleteRecordsByPrimaryKey" parameterType="java.util.List">
         delete from school
         where sid in
@@ -35,6 +38,7 @@
             #{sid,jdbcType=INTEGER}
         </foreach>
     </delete>
+
     <insert id="insert" parameterType="com.sf.edu.entity.School">
     insert into school (sid, name, aid
       )
