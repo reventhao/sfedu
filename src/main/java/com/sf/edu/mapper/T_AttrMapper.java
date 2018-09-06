@@ -1,7 +1,9 @@
 package com.sf.edu.mapper;
 
 import com.sf.edu.entity.T_Attr;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface T_AttrMapper {
     int deleteByPrimaryKey(Integer seq);
 
