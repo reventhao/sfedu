@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -46,6 +47,13 @@ public class AreaController {
         System.out.println(aid);
         area.setAid(aid);
         areaService.saveArea(area);
+        return "success";
+    }
+
+    @RequestMapping(value = "batchput")
+    @ResponseBody
+    public String batchPut(@RequestParam List<Area> list){
+        System.out.println(list.get(0).getAid());
         return "success";
     }
 }
