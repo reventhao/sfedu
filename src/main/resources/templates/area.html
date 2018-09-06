@@ -170,9 +170,17 @@
                             deleteRecord: function () { //获取选中数据
                                 var checkStatus = table.checkStatus('areatable')
                                     , data = checkStatus.data;
+                                var arr = new Array();
+                                for(var i = 0;i<data.length;i++){
+                                    arr.push(data[i]);
+                                }
+                                alert(arr);
                                 $.ajax({
                                     url: "/area/batchput",
-                                    data: {map: data},
+                                    data:JSON.stringify(arr),
+                                    type: "POST",
+                                    dataType:"json",
+                                    contentType:"application/json",
                                     success: function () {
                                         layer.msg('添加成功', {
                                             icon: 1,

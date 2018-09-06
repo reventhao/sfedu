@@ -1,16 +1,19 @@
 package com.sf.edu.entity;
 
 public class Area {
-    private String aid;
+    private int aid;
 
     private String name;
 
-    public String getAid() {
+    public Area() {
+    }
+
+    public int getAid() {
         return aid;
     }
 
-    public void setAid(String aid) {
-        this.aid = aid == null ? null : aid.trim();
+    public void setAid(int aid) {
+        this.aid = aid;
     }
 
     public String getName() {

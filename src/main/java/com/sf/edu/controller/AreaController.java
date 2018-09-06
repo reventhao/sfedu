@@ -2,14 +2,16 @@ package com.sf.edu.controller;
 
 import com.sf.edu.entity.Area;
 import com.sf.edu.service.AreaService;
-import com.sf.edu.tool.SeqGenerate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +21,8 @@ import java.util.Map;
 public class AreaController {
     @Autowired
     private AreaService areaService;
+
+    private static final Logger logger= LoggerFactory.getLogger(AreaController.class);
 
     @RequestMapping(value = "area_page")
     public ModelAndView areaPage() {
@@ -39,21 +43,29 @@ public class AreaController {
 
     @RequestMapping(value = "savearea")
     @ResponseBody
-    public String saveArea(Area area){
-        String aid = SeqGenerate.getSeq(2);
-        while(areaService.selectArea(aid)!=null){
-            aid = SeqGenerate.getSeq(2);
+    public String saveArea(Area area) {
+        try {
+            areaService.saveArea(area);
+            return "success";
+        } catch (Exception e) {
+            return "error";
         }
-        System.out.println(aid);
-        area.setAid(aid);
-        areaService.saveArea(area);
-        return "success";
+
     }
 
     @RequestMapping(value = "batchput")
     @ResponseBody
-    public String batchPut(@RequestParam List<Area> list){
-        System.out.println(list.get(0).getAid());
-        return "success";
+    public String batchPut(@RequestBody List<Area> list) {
+        List<Integer> records = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            records.add(list.get(i).getAid());
+        }
+        try {
+            areaService.removeRecords(records);
+            logger.info("批量删除记录");
+            return "success";
+        } catch (Exception e) {
+            return "error";
+        }
     }
 }

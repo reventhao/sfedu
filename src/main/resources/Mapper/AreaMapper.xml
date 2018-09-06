@@ -31,9 +31,18 @@
     delete from area
     where aid = #{aid,jdbcType=VARCHAR}
   </delete>
+
+  <delete id="deleteRecordsByPrimary" parameterType="java.util.List">
+    delete from area
+    where aid in
+    <foreach collection="list" item="aid" index="index" open="(" separator="," close=")">
+      #{aid,jdbcType=INTEGER}
+    </foreach>
+  </delete>
+
   <insert id="insert" parameterType="com.sf.edu.entity.Area">
-    insert into area (aid, name)
-    values (#{aid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR})
+    insert into area (name)
+    values (#{name,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.sf.edu.entity.Area">
     insert into area
