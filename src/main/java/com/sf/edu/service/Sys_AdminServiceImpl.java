@@ -14,7 +14,7 @@ public class Sys_AdminServiceImpl implements Sys_AdminService {
     private Sys_AdminMapper sys_adminMapper;
 
     @Override
-    public Sys_Admin getSys_Admin(String acc,String pwd) {
+    public Sys_Admin login(String acc,String pwd) {
         return sys_adminMapper.selectByAccPwd(acc,pwd);
     }
 }

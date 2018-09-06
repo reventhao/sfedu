@@ -16,9 +16,25 @@
     from student
     where stid = #{stid,jdbcType=VARCHAR}
   </select>
+  <select id="selectAllRecords" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from student
+  </select>
+  <select id="selectCount" resultType="java.lang.Integer">
+        select count(stid)
+        from student
+    </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from student
     where stid = #{stid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteRecordsByPrimaryKey" parameterType="java.util.List">
+    delete from student
+    where stid in
+    <foreach collection="list" item="stid" index="index" open="(" separator="," close=")">
+      #{stid,jdbcType=INTEGER}
+    </foreach>
   </delete>
   <insert id="insert" parameterType="com.sf.edu.entity.Student">
     insert into student (stid, ssid, cid, 
@@ -56,6 +72,14 @@
         #{name,jdbcType=VARCHAR},
       </if>
     </trim>
+  </insert>
+  <insert id="insertRecords" parameterType="com.sf.edu.entity.Student">
+    insert into student
+    (stid, ssid, cid,name)
+    VALUES
+    <foreach collection="list" item="student" separator=",">
+      (#{student.stid},#{student.ssid},#{student.cid},#{student.name})
+    </foreach>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.sf.edu.entity.Student">
     update student

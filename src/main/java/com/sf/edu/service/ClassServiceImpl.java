@@ -15,6 +15,6 @@ public class ClassServiceImpl implements ClassService{
 
     @Override
     public List<Class> listClass() {
-        return classMapper.listClass();
+        return classMapper.selectAllRecords();
     }
 }

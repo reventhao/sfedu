@@ -16,10 +16,28 @@
     from class
     where cid = #{cid,jdbcType=INTEGER}
   </select>
+  <select id="selectAllRecords" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from class
+  </select>
+  <select id="selectCount" resultType="java.lang.Integer">
+        select count(cid)
+        from class
+    </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from class
     where cid = #{cid,jdbcType=INTEGER}
   </delete>
+
+  <delete id="deleteRecordsByPrimaryKey" parameterType="java.util.List">
+    delete from class
+    where cid in
+    <foreach collection="list" item="cid" index="index" open="(" separator="," close=")">
+      #{cid,jdbcType=INTEGER}
+    </foreach>
+  </delete>
+
   <insert id="insert" parameterType="com.sf.edu.entity.Class">
     insert into class (cid, gid, tid, 
       name)
@@ -56,6 +74,14 @@
         #{name,jdbcType=VARCHAR},
       </if>
     </trim>
+  </insert>
+  <insert id="insertRecords" parameterType="com.sf.edu.entity.Class">
+    insert into class
+    (gid,tid,name)
+    VALUES
+    <foreach collection="list" item="class" separator=",">
+      (#{class.gid},#{class.tid},#{class.name})
+    </foreach>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.sf.edu.entity.Class">
     update class

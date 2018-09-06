@@ -17,7 +17,7 @@ public class AreaServiceImpl implements AreaService {
 
     @Override
     public List<Area> listArea() {
-        return areaMapper.listArea();
+        return areaMapper.selectAllRecords();
     }
 
     @Override
@@ -32,13 +32,13 @@ public class AreaServiceImpl implements AreaService {
     }
 
     @Override
-    public Area selectArea(String aid) {
+    public Area selectArea(int aid) {
         return areaMapper.selectByPrimaryKey(aid);
     }
 
     @Override
     public int removeRecords(List<Integer> records) {
-        int count = areaMapper.deleteRecordsByPrimary(records);
+        int count = areaMapper.deleteRecordsByPrimaryKey(records);
         return count;
     }
 }

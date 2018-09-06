@@ -33,11 +33,11 @@ public class Sys_AdminController {
     @ResponseBody
     public String login(@RequestParam String acc, @RequestParam String pwd, @RequestParam String vercode, HttpSession session) {
         String svercode = (String) session.getAttribute("vercode");
-        Sys_Admin sys_admin = sys_adminService.getSys_Admin(acc,pwd);
+        Sys_Admin sys_admin = sys_adminService.login(acc,pwd);
         if (!svercode.equalsIgnoreCase(vercode.trim())) {
             return "error2";            //验证码错误
         }
-        if (sys_admin == null) {
+        if (null == sys_admin) {
             return "error1";            //用户名或密码错误
         }
         session.setAttribute("sys_admin",sys_admin);

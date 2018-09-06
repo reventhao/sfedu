@@ -13,7 +13,7 @@ public class SchoolServiceImpl implements SchoolService{
     private SchoolMapper schoolMapper;
     @Override
     public List<School> listSchool() {
-        return schoolMapper.listSchool();
+        return schoolMapper.selectAllRecords();
     }
 
     @Override

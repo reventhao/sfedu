@@ -15,10 +15,28 @@
     from grade
     where gid = #{gid,jdbcType=INTEGER}
   </select>
+  <select id="selectAllRecords" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from grade
+  </select>
+  <select id="selectCount" resultType="java.lang.Integer">
+        select count(gid)
+        from grade
+    </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from grade
     where gid = #{gid,jdbcType=INTEGER}
   </delete>
+
+  <delete id="deleteRecordsByPrimaryKey" parameterType="java.util.List">
+    delete from grade
+    where gid in
+    <foreach collection="list" item="gid" index="index" open="(" separator="," close=")">
+      #{gid,jdbcType=INTEGER}
+    </foreach>
+  </delete>
+
   <insert id="insert" parameterType="com.sf.edu.entity.Grade">
     insert into grade (gid, sid, name
       )
@@ -49,6 +67,14 @@
         #{name,jdbcType=VARCHAR},
       </if>
     </trim>
+  </insert>
+  <insert id="insertRecords" parameterType="com.sf.edu.entity.Grade">
+    insert into grade
+    (sid,name)
+    VALUES
+    <foreach collection="list" item="grade" separator=",">
+      (#{grade.sid},#{grade.name})
+    </foreach>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.sf.edu.entity.Grade">
     update grade

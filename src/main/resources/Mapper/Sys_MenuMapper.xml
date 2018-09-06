@@ -20,6 +20,11 @@
     from sys_menu
     where seq = #{seq,jdbcType=INTEGER}
   </select>
+  <select id="selectAllRecords" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from sys_menu
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from sys_menu
     where seq = #{seq,jdbcType=INTEGER}

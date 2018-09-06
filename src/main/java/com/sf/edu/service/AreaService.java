@@ -26,7 +26,7 @@ public interface AreaService {
      */
     public int saveArea(Area area);
 
-    public Area selectArea(String aid);
+    public Area selectArea(int aid);
 
     public int removeRecords(List<Integer> records);
 }

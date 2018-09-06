@@ -13,7 +13,7 @@ public class GradeServiceImp implements GradeService {
     private GradeMapper gradeMapper;
     @Override
     public List<Grade> listGrade(){
-        return gradeMapper.listGrade();
+        return gradeMapper.selectAllRecords();
     }
     @Override
     public int saveGrade(Grade record) {

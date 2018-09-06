@@ -25,7 +25,7 @@ public class Sys_MenuServiceImpl implements Sys_MenuService {
      */
     @Override
     public List<Sys_Menu> getAllSys_Menu() {
-        List<Sys_Menu> list = sys_menuMapper.listSys_Menu();
+        List<Sys_Menu> list = sys_menuMapper.selectAllRecords();
         return list;
     }
 }

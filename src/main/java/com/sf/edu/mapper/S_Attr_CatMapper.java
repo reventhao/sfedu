@@ -1,7 +1,9 @@
 package com.sf.edu.mapper;
 
 import com.sf.edu.entity.S_Attr_Cat;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface S_Attr_CatMapper {
     int deleteByPrimaryKey(Integer spid);
 
